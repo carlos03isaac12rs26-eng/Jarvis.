@@ -16,8 +16,15 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Flet CLI
-        run: pip install flet
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.x'
+          cache: true
+
+      - name: Install dependencies
+        run: pip install flet google-genai
 
       - name: Build APK with Flet
         run: flet build apk --project-name "JARVIS" --org "com.jarvis.mobile"
+        
