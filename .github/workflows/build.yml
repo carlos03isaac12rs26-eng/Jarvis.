@@ -25,12 +25,15 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.x'
+          flutter-version: '3.19.6'
+          channel: 'stable'
           cache: true
 
-      - name: Install dependencies
-        run: pip install flet google-genai
+      - name: Install Flet and dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flet google-genai
 
-      - name: Build APK with Flet
-        run: flet build apk --project-name "JARVIS" --org "com.jarvis.mobile"
+      - name: Build Android APK
+        run: flet build apk --verbose
         
