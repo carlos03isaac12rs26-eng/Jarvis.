@@ -84,5 +84,8 @@ def main(page: ft.Page):
         ft.Row([user_input, send_button])
     )
 
-ft.app(target=main)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    ft.app(target=main, view=ft.WEB_BROWSER, port=port, address="0.0.0.0")
+    
           
